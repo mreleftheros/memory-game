@@ -6,6 +6,7 @@ class UI {
     this.levels = document.getElementById("levels");
     this.gameScreen = document.getElementById("gameScreen");
     this.cardsContainer = document.getElementById("cardsContainer");
+    this.timer = document.getElementById("timer");
   }
   chooseLevel(e) {
     if (e.target.tagName !== "BUTTON") return; // check

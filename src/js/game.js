@@ -13,11 +13,34 @@ class Game {
     this.shuffledCards;
     this.cardChoices = [];
     this.isPlaying = false;
+    let timer;
   }
   init() {
     this.isPlaying = true;
     this.setCardsCount();
     this.shuffleCards();
+    // this.setTime();
+  }
+  setTime() {
+    const startTime = Date.now();
+
+    timer = setInterval(() => {
+      const now = Date.now();
+      let time = now - startTime;
+      
+      const minutes = String(Math.floor(time / 1000 / 60) % 60);
+      const seconds = String(Math.floor(time / 1000) % 60);
+
+      if (minutes.length === 1) {
+        minutes = "0" + minutes;
+      }
+
+      if (seconds.length === 1) {
+        seconds = "0" + seconds;
+      }
+
+      ui.displayTime(minutes, seconds)
+    }, 1000)
   }
   setCardsCount() {
     this.cardsCount = this.levels.filter(level => level.name === this.level)[0].count;
