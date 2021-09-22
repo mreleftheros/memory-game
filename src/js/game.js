@@ -19,12 +19,12 @@ class Game {
     this.isPlaying = true;
     this.setCardsCount();
     this.shuffleCards();
-    this.setTime();
+    this.startTimer();
   }
-  setTime() {
+  startTimer() {
     const startTime = Date.now();
 
-    timer = setInterval(() => {
+    this.timer = setInterval(() => {
       const now = Date.now();
       let time = now - startTime;
       
@@ -40,7 +40,7 @@ class Game {
       }
 
       ui.displayTime(minutes, seconds)
-    }, 1000)
+    }, 1000);
   }
   setCardsCount() {
     this.cardsCount = this.levels.filter(level => level.name === this.level)[0].count;
@@ -89,7 +89,8 @@ class Game {
     ui.renderCards();
   }
   endGame() {
-    game.isPlaying = false;
+    this.isPlaying = false;
+    clearInterval(this.timer);
   }
 }
 
