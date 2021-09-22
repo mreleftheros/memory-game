@@ -127,12 +127,15 @@ body {
 }
 .main__game-screen__game-container__cards.rookie {
   grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
 }
 .main__game-screen__game-container__cards.skilled {
   grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
 }
 .main__game-screen__game-container__cards.expert {
   grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr);
 }
 .main__game-screen__game-container__cards {
   display: grid;
@@ -157,4 +160,6 @@ body {
 }
 .main__game-screen__game-container__cards__card__img {
   max-width: 100%;
+  max-height: 10rem;
+  object-fit: cover;
 }
