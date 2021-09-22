@@ -129,10 +129,17 @@ body {
 .main__game-screen__game-container__timer {
   position: absolute;
   top: 1rem;
-  right: 50%;
+  left: 50%;
+  transform: translate(-50%);
   display: inline-block;
   font-size: 2.5rem;
   text-align: center;
+}
+.main__game-screen__game-container__timer__minutes {
+  letter-spacing: 0.1rem;
+}
+.main__game-screen__game-container__timer__seconds {
+  letter-spacing: 0.2rem;
 }
 .main__game-screen__game-container__cards.rookie {
   grid-template-columns: repeat(4, 1fr);
