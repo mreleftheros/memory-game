@@ -52,7 +52,6 @@ class UI {
     if (e.target.classList.contains("active") || !game.isPlaying) return; // check
     
     game.isPlaying = false;
-    // game.setChoiceCount();
 
     this.openCard(e);
   }
@@ -66,13 +65,26 @@ class UI {
   closeCards() {
     for (let child of this.cardsContainer.children) {
       child.firstElementChild.classList.remove("active");
-      child.firstElementChild.src = `./assets/card.jpg`;
+
+      if (!child.firstElementChild.classList.contains("found")) {
+        child.firstElementChild.src = `./assets/card.jpg`;
+      }
     }
+
+    game.isPlaying = true;
+  }
+  setFoundCards(card) {
+    let cards = document.querySelectorAll(`[data-card=${card}]`);
+
+    for (let card of cards) {
+      card.classList.add("found");
+    }
+
     game.isPlaying = true;
   }
 }
 
 const ui = new UI();
-let game = new Game("skilled")
+let game = new Game("rookie")
 
 export { ui, game };

@@ -11,7 +11,6 @@ class Game {
     this.cardsCount;
     this.cards = ["banana", "broccoli", "carrot", "cherry", "coconut", "egg", "eggplant", "lemon", "onion", "strawberry"];
     this.shuffledCards;
-    // this.choiceCount = 0;
     this.cardChoices = [];
     this.isPlaying = false;
   }
@@ -27,9 +26,13 @@ class Game {
     this.cardChoices.push(card);
 
     if (this.cardChoices.length === 2) {
-      this.cardChoices.length = 0;
+      if (this.cardChoices[0] === this.cardChoices[1]) {
+        ui.setFoundCards(this.cardChoices[0]);
+      } else {
+        setTimeout(ui.closeCards, 1000);
+      }
 
-      setTimeout(ui.closeCards, 1000);
+      this.cardChoices.length = 0;
     }
     else {
       this.isPlaying = true;
