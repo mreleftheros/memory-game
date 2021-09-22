@@ -65,6 +65,9 @@ class Game {
     this.shuffledCards = [...arr];
     ui.renderCards();
   }
+  endGame() {
+    game.isPlaying = false;
+  }
 }
 
 export default Game;

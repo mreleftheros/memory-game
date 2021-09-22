@@ -75,12 +75,21 @@ class UI {
   }
   setFoundCards(card) {
     let cards = document.querySelectorAll(`[data-card=${card}]`);
-
+    
     for (let card of cards) {
       card.classList.add("found");
     }
+    
+    let allFound = Array.from(this.cardsContainer.children).every(child => {
+      return child.firstElementChild.classList.contains("found");
+    })
 
-    game.isPlaying = true;
+    if (allFound) {
+      game.endGame();
+    }
+    else {
+      game.isPlaying = true;
+    }
   }
 }
 
