@@ -1,3 +1,5 @@
+import Game from "./game";
+
 class UI {
   constructor() {
     this.levels = document.getElementById("levels");
@@ -5,9 +7,15 @@ class UI {
 
   chooseLevel(e) {
     if (e.target.tagName !== "BUTTON") return; // check
+    
+    const level = e.target.getAttribute("data-level");
+
+    game = new Game(level);
+    game.init();
   }
 }
 
 const ui = new UI();
+let game;
 
-export default ui;
+export { ui, game };

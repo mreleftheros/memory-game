@@ -1,4 +1,4 @@
-import ui from "./ui";
+import { ui, game } from "./ui";
 
 const init = () => {
   ui.levels.addEventListener("click", ui.chooseLevel);
