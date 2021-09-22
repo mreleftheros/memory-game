@@ -49,6 +49,7 @@ class UI {
     this.cardsContainer.appendChild(fragment);
   }
   chooseCard(e) {
+    game.setChoiceCount();
     if (e.target.classList.contains("active")) return; // check
 
     const card = e.target.getAttribute("data-card");

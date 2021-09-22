@@ -20,6 +20,11 @@ class Game {
   setCardsCount() {
     this.cardsCount = this.levels.filter(level => level.name === this.level)[0].count;
   }
+  setChoiceCount() {
+    this.choiceCount++;
+    
+    if (this.choiceCount === 2) this.choiceCount = 0;
+  }
   shuffleCards() {
     let len = this.cardsCount;
     let arr = [];
