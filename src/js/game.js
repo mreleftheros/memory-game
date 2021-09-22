@@ -12,8 +12,10 @@ class Game {
     this.cards = ["banana", "broccoli", "carrot", "cherry", "coconut", "egg", "eggplant", "lemon", "onion", "strawberry"];
     this.shuffledCards;
     this.choiceCount = 0;
+    this.isPlaying = false;
   }
   init() {
+    this.isPlaying = true;
     this.setCardsCount();
     this.shuffleCards();
   }

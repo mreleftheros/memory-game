@@ -49,9 +49,11 @@ class UI {
     this.cardsContainer.appendChild(fragment);
   }
   chooseCard(e) {
-    if (e.target.classList.contains("active")) return; // check
+    if (e.target.classList.contains("active") || !game.isPlaying) return; // check
     
+    game.isPlaying = false;
     game.setChoiceCount();
+
     this.openCard(e);
   }
   openCard(e) {
@@ -59,6 +61,19 @@ class UI {
     e.target.classList.add("active");
 
     e.target.src = `./assets/${card}.png`;
+
+    if (game.choiceCount === 0) {
+      setTimeout(this.closeCards, 1000);
+    } else {
+      game.isPlaying = true;
+    }
+  }
+  closeCards() {
+    for (let child of this.cardsContainer.children) {
+      child.firstElementChild.classList.remove("active");
+      child.firstElementChild.src = `./assets/card.jpg`;
+    }
+    game.isPlaying = true;
   }
 }
 
