@@ -132,6 +132,10 @@ body {
   max-width: 100rem;
   padding: 1rem;
   min-height: 90vh;
-  border-radius: 1rem;
-  box-shadow: 0 0 10px #000;
+}
+@media only screen and (min-width: 768px) {
+  .main__game-screen__game-container__cards {
+    border-radius: 1rem;
+    box-shadow: 0 0 10px #000;
+  }
 }

@@ -14,19 +14,19 @@ class UI {
 
     game = new Game(level);
     this.transitionScreens();
-    game.init();
   }
   transitionScreens() {
     this.levelScreen.classList.add("transition");
     this.levelScreen.addEventListener("transitionend", () => {
       this.levelScreen.classList.remove("active");
     })
-
+    
     this.gameScreen.classList.add("active");
+    game.init();
   }
 }
 
 const ui = new UI();
-let game;
+let game = new Game()
 
 export { ui, game };

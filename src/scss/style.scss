@@ -133,8 +133,11 @@
         max-width: 100rem;
         padding: 1rem;
         min-height: 90vh;
-        border-radius: 1rem;
-        box-shadow: 0 0 10px #000;
+        
+        @include mq(768px) {
+          border-radius: 1rem;
+          box-shadow: 0 0 10px #000;
+        }
       }
     }
   }
