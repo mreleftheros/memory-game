@@ -23,7 +23,10 @@ class Game {
   setChoiceCount() {
     this.choiceCount++;
     
-    if (this.choiceCount === 2) this.choiceCount = 0;
+    if (this.choiceCount === 2) {
+      this.choiceCount = 0;
+      // ui.closeCards();
+    };
   }
   shuffleCards() {
     let len = this.cardsCount;

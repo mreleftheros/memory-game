@@ -49,15 +49,20 @@ class UI {
     this.cardsContainer.appendChild(fragment);
   }
   chooseCard(e) {
-    game.setChoiceCount();
     if (e.target.classList.contains("active")) return; // check
-
+    
+    game.setChoiceCount();
+    this.openCard(e);
+  }
+  openCard(e) {
     const card = e.target.getAttribute("data-card");
     e.target.classList.add("active");
+
+    e.target.src = `./assets/${card}.png`;
   }
 }
 
 const ui = new UI();
-let game = new Game("expert")
+let game = new Game("skilled")
 
 export { ui, game };
