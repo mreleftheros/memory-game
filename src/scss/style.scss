@@ -43,7 +43,7 @@
           position: relative;
           background: rgb(1, 255, 1);
           border: 0;
-          padding: 1rem;
+          padding: .5rem;
           border-radius: 1rem;
           box-shadow: 0 0 3px #000;
           cursor: pointer;
@@ -75,6 +75,7 @@
             font-weight: bold;
             letter-spacing: .2rem;
             z-index: 1;
+            pointer-events: none;
           }
         }
       }
