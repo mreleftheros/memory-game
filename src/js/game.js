@@ -11,7 +11,8 @@ class Game {
     this.cardsCount;
     this.cards = ["banana", "broccoli", "carrot", "cherry", "coconut", "egg", "eggplant", "lemon", "onion", "strawberry"];
     this.shuffledCards;
-    this.choiceCount = 0;
+    // this.choiceCount = 0;
+    this.cardChoices = [];
     this.isPlaying = false;
   }
   init() {
@@ -22,13 +23,17 @@ class Game {
   setCardsCount() {
     this.cardsCount = this.levels.filter(level => level.name === this.level)[0].count;
   }
-  setChoiceCount() {
-    this.choiceCount++;
-    
-    if (this.choiceCount === 2) {
-      this.choiceCount = 0;
-      // ui.closeCards();
-    };
+  setCardChoice(card) {
+    this.cardChoices.push(card);
+
+    if (this.cardChoices.length === 2) {
+      this.cardChoices.length = 0;
+
+      setTimeout(ui.closeCards, 1000);
+    }
+    else {
+      this.isPlaying = true;
+    }
   }
   shuffleCards() {
     let len = this.cardsCount;

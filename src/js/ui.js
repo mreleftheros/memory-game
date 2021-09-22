@@ -52,21 +52,16 @@ class UI {
     if (e.target.classList.contains("active") || !game.isPlaying) return; // check
     
     game.isPlaying = false;
-    game.setChoiceCount();
+    // game.setChoiceCount();
 
     this.openCard(e);
   }
   openCard(e) {
     const card = e.target.getAttribute("data-card");
     e.target.classList.add("active");
-
     e.target.src = `./assets/${card}.png`;
 
-    if (game.choiceCount === 0) {
-      setTimeout(this.closeCards, 1000);
-    } else {
-      game.isPlaying = true;
-    }
+    game.setCardChoice(card);
   }
   closeCards() {
     for (let child of this.cardsContainer.children) {
