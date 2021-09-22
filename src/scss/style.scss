@@ -58,12 +58,12 @@
             border-radius: 1rem;
             height: 100%;
             background: rgb(3, 199, 3);
-            transform: translate(100rem);
-            transition: transform .5s ease-out;
+            transform: translate(0, 10rem);
+            transition: transform .3s ease-out;
           }
 
           &:hover::before {
-            transform: translate(0);
+            transform: translate(0, 0);
           }
 
           &__text {
