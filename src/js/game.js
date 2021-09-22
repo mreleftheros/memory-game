@@ -13,7 +13,6 @@ class Game {
     this.shuffledCards;
   }
   init() {
-    console.log("game init", this.level);
     this.setCardsCount();
     this.shuffleCards();
   }
@@ -45,6 +44,7 @@ class Game {
       arr.splice(secondRandomIndex, 1, card);
     })
     this.shuffledCards = [...arr];
+    ui.renderCards();
   }
 }
 

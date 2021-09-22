@@ -125,9 +125,22 @@
       align-items: center;
       width: 100%;
       height: 90vh;
+
+      &__cards.rookie {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      &__cards.skilled {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      &__cards.expert {
+        grid-template-columns: repeat(5, 1fr);
+      }
       
       &__cards {
         display: grid;
+        grid-gap: .5rem;
         background: #fff;
         width: 100%;
         max-width: 100rem;
@@ -137,6 +150,17 @@
         @include mq(768px) {
           border-radius: 1rem;
           box-shadow: 0 0 10px #000;
+        }
+
+        &__card {
+          width: 8rem;
+          justify-self: center;
+          align-self: center;
+          cursor: pointer;
+          
+          &__img {
+            max-width: 100%;
+          }
         }
       }
     }
