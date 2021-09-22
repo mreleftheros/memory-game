@@ -31,24 +31,29 @@ class UI {
     game.shuffledCards.forEach(card => {
       // create card template
       const divElement = document.createElement("div");
-      divElement.setAttribute("data-card", card);
       divElement.classList.add("main__game-screen__game-container__cards__card");
-
+      
       const img = new Image();
       img.classList.add("main__game-screen__game-container__cards__card__img")
+      img.setAttribute("data-card", card);
       img.src = "./assets/card.jpg";
-
+      
       img.onload = function() {
         divElement.appendChild(img);
       }
 
-      divElement.addEventListener("click", e => chooseCard(e));
+      img.addEventListener("click", e => this.chooseCard(e));
       fragment.appendChild(divElement);
     })
 
     this.cardsContainer.appendChild(fragment);
   }
-  chooseCard(e) {}
+  chooseCard(e) {
+    if (e.target.classList.contains("active")) return; // check
+
+    const card = e.target.getAttribute("data-card");
+    e.target.classList.add("active");
+  }
 }
 
 const ui = new UI();
