@@ -19,7 +19,7 @@ class Game {
     this.isPlaying = true;
     this.setCardsCount();
     this.shuffleCards();
-    // this.setTime();
+    this.setTime();
   }
   setTime() {
     const startTime = Date.now();
@@ -28,8 +28,8 @@ class Game {
       const now = Date.now();
       let time = now - startTime;
       
-      const minutes = String(Math.floor(time / 1000 / 60) % 60);
-      const seconds = String(Math.floor(time / 1000) % 60);
+      let minutes = String(Math.floor(time / 1000 / 60) % 60);
+      let seconds = String(Math.floor(time / 1000) % 60);
 
       if (minutes.length === 1) {
         minutes = "0" + minutes;
