@@ -11,7 +11,8 @@
 <body>
   
   <main class="main">
-    <section class="main__level-screen">
+    <!-- Level Screen -->
+    <section class="main__level-screen" id="levelScreen">
       <div class="main__level-screen__level-container">
         <p class="main__level-screen__level-container__text">Please choose a level:</p>
         <div class="main__level-screen__level-container__levels" id="levels">
@@ -25,6 +26,16 @@
             <span class="main__level-screen__level-container__levels__level__text">Expert</span>
           </button>
         </div>
+      </div>
+    </section>
+
+    <!-- Game Screen -->
+    <section class="main__game-screen active" id="gameScreen">
+      <header class="main__game-screen__header">
+        <p class="main__game-screen__header__text">Find The Matches</p>
+      </header>
+      <div class="main__game-screen__game-container">
+        <div class="main__game-screen__game-container__cards" id="cardsContainer"></div>
       </div>
     </section>
   </main>

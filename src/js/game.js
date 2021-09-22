@@ -6,7 +6,8 @@ class Game {
     this.level = level;
   }
   init() {
-    console.log("game init", this.level)
+    console.log("game init", this.level);
+    ui.renderCards();
   }
 }
 
