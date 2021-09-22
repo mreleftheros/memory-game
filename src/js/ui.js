@@ -27,6 +27,6 @@ class UI {
 }
 
 const ui = new UI();
-let game = new Game()
+let game = new Game("rookie")
 
 export { ui, game };
