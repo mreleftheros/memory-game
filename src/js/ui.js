@@ -100,6 +100,6 @@ class UI {
 }
 
 const ui = new UI();
-let game = new Game("rookie")
+let game;
 
-export { ui, game };
+export { ui };
