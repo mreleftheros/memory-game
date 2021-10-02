@@ -50,6 +50,10 @@ class UI {
     this.cardsContainer.appendChild(fragment);
   }
   chooseCard(e) {
+    if (!game.timer) { // start timer
+      game.startTimer();
+    }
+
     if (e.target.classList.contains("active") || !game.isPlaying) return; // check
     
     game.isPlaying = false;

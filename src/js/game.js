@@ -17,9 +17,9 @@ class Game {
   }
   init() {
     this.isPlaying = true;
+
     this.setCardsCount();
     this.shuffleCards();
-    this.startTimer();
   }
   startTimer() {
     const startTime = Date.now();
@@ -39,7 +39,7 @@ class Game {
         seconds = "0" + seconds;
       }
 
-      ui.displayTime(minutes, seconds)
+      ui.displayTime(minutes, seconds);
     }, 1000);
   }
   setCardsCount() {
@@ -89,8 +89,9 @@ class Game {
     ui.renderCards();
   }
   endGame() {
-    this.isPlaying = false;
     clearInterval(this.timer);
+
+    this.isPlaying = false;
   }
 }
 
