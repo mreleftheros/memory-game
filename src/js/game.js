@@ -14,6 +14,7 @@ class Game {
     this.cardChoices = [];
     this.isPlaying = false;
     let timer;
+    this.totalTime;
   }
   init() {
     this.isPlaying = true;
@@ -30,7 +31,9 @@ class Game {
       
       let minutes = String(Math.floor(time / 1000 / 60) % 60);
       let seconds = String(Math.floor(time / 1000) % 60);
+      let milliseconds = String(time % 1000);
 
+      // formatting
       if (minutes.length === 1) {
         minutes = "0" + minutes;
       }
@@ -39,8 +42,15 @@ class Game {
         seconds = "0" + seconds;
       }
 
-      ui.displayTime(minutes, seconds);
-    }, 1000);
+      if (milliseconds.length === 1) {
+        milliseconds = "00" + milliseconds;
+      }
+      else if (milliseconds.length === 2) {
+        milliseconds = "0" + milliseconds;
+      }
+
+      ui.displayTime(minutes, seconds, milliseconds);
+    }, 1);
   }
   setCardsCount() {
     this.cardsCount = this.levels.filter(level => level.name === this.level)[0].count;

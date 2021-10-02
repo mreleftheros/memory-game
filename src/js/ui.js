@@ -96,8 +96,11 @@ class UI {
       game.isPlaying = true;
     }
   }
-  displayTime(minutes, seconds) {
-    let html = `<span class="main__game-screen__game-container__timer__minutes">${minutes}</span> : <span class="main__game-screen__game-container__timer__seconds">${seconds}</span>`;
+  displayTime(minutes, seconds, milliseconds) {
+    let html = `<span class="main__game-screen__game-container__timer__minutes">${minutes} : </span>
+    <span class="main__game-screen__game-container__timer__seconds">${seconds} :</span>
+    <span class="main__game-screen__game-container__timer__milliseconds">${milliseconds}</span>
+    `;
 
     this.timer.innerHTML = html;
   }
