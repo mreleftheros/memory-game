@@ -128,17 +128,23 @@ body {
 }
 .main__game-screen__game-container__timer {
   position: absolute;
+  display: inline-block;
   top: 1rem;
   left: 50%;
   transform: translate(-50%);
-  display: inline-block;
   font-size: 2.5rem;
   text-align: center;
 }
 .main__game-screen__game-container__timer__minutes {
+  display: inline-block;
   letter-spacing: 0.1rem;
 }
 .main__game-screen__game-container__timer__seconds {
+  display: inline-block;
+  letter-spacing: 0.2rem;
+}
+.main__game-screen__game-container__timer__milliseconds {
+  display: inline-block;
   letter-spacing: 0.2rem;
 }
 .main__game-screen__game-container__cards.rookie {
