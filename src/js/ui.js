@@ -108,6 +108,72 @@ class UI {
 
     this.timer.innerHTML = html;
   }
+  renderHighscores() {
+    const highscores = game.highscores.sort((a, b) => a.time - b.time);
+
+    // helper function which takes a timestamp and returns a timing format
+    const setTiming = timestamp => {
+      let minutes = String(Math.floor(timestamp / 1000 / 60));
+      let seconds = String(Math.floor(timestamp / 1000) % 60);
+      let milliseconds = String(timestamp % 1000);
+
+      // formatting
+      if (minutes.length === 1) {
+        minutes = "0" + minutes;
+      }
+
+      if (seconds.length === 1) {
+        seconds = "0" + seconds;
+      }
+
+      if (milliseconds.length === 1) {
+        milliseconds = "00" + milliseconds;
+      }
+      else if (milliseconds.length === 2) {
+        milliseconds = "0" + milliseconds;
+      }
+
+      return `${minutes} : ${seconds} : ${milliseconds}`;
+    };
+
+    let html = `
+      <li class="main__game-screen__game-container__highscores-container__highscores-list__item">
+        <span class="main__game-screen__game-container__highscores-container__highscores-list__item__place">
+          &#129351; &#127942; 1st Place
+        </span>
+        <span class="main__game-screen__game-container__highscores-container__highscores-list__item__name">
+          ${highscores[0].name}
+        </span>
+        <span class="main__game-screen__game-container__highscores-container__highscores-list__item__time">
+          ${setTiming(highscores[0].time)}
+        </span>
+      </li>
+      <li class="main__game-screen__game-container__highscores-container__highscores-list__item">
+        <span class="main__game-screen__game-container__highscores-container__highscores-list__item__place">
+          &#129352; 2nd Place
+        </span>
+        <span class="main__game-screen__game-container__highscores-container__highscores-list__item__name">
+          ${highscores[1].name}
+        </span>
+        <span class="main__game-screen__game-container__highscores-container__highscores-list__item__time">
+          ${setTiming(highscores[1].time)}
+        </span>
+      </li>
+      <li class="main__game-screen__game-container__highscores-container__highscores-list__item">
+        <span class="main__game-screen__game-container__highscores-container__highscores-list__item__place">
+          &#129353; 3rd Place
+        </span>
+        <span class="main__game-screen__game-container__highscores-container__highscores-list__item__name">
+          ${highscores[2].name}
+        </span>
+        <span class="main__game-screen__game-container__highscores-container__highscores-list__item__time">
+          ${setTiming(highscores[2].time)}
+        </span>
+      </li>
+    `;
+
+    this.highscoresList.innerHTML = html;
+  }
 }
 
 const ui = new UI();

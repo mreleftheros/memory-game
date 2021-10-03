@@ -21,6 +21,7 @@ class Game {
   async init() {
     this.isPlaying = true;
     this.highscores = await firebase.getHighscores();
+    ui.renderHighscores();
 
     this.setCardsCount();
     this.shuffleCards();
@@ -32,7 +33,7 @@ class Game {
       const now = Date.now();
       let time = now - startTime;
       
-      let minutes = String(Math.floor(time / 1000 / 60) % 60);
+      let minutes = String(Math.floor(time / 1000 / 60));
       let seconds = String(Math.floor(time / 1000) % 60);
       let milliseconds = String(time % 1000);
 

@@ -40,8 +40,6 @@ class Firebase {
       name: "George3",
       time: 101000
     });
-
-    console.log("data saved");
   }
 }
 
