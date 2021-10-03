@@ -1,4 +1,5 @@
-import { ui } from "./ui";
+import ui from "./ui";
+import firebase from "./firebase";
 
 class Game {
   constructor(level) {
@@ -15,9 +16,11 @@ class Game {
     this.isPlaying = false;
     let timer;
     this.totalTime;
+    this.highscores = [];
   }
-  init() {
+  async init() {
     this.isPlaying = true;
+    this.highscores = await firebase.getHighscores();
 
     this.setCardsCount();
     this.shuffleCards();

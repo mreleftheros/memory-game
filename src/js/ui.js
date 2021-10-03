@@ -7,6 +7,7 @@ class UI {
     this.gameScreen = document.getElementById("gameScreen");
     this.cardsContainer = document.getElementById("cardsContainer");
     this.timer = document.getElementById("timer");
+    this.highscoresList = document.getElementById("highscoresList");
   }
   chooseLevel(e) {
     if (e.target.tagName !== "BUTTON") return; // check
@@ -112,4 +113,4 @@ class UI {
 const ui = new UI();
 let game;
 
-export { ui };
+export default ui;

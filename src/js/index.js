@@ -1,7 +1,9 @@
-import { ui } from "./ui";
+import ui from "./ui";
+import firebase from "./firebase";
 
-const init = () => {
+const init = async () => {
   ui.levels.addEventListener("click", e => ui.chooseLevel(e));
+  // await firebase.setHighscores();
 };
 
 document.addEventListener("DOMContentLoaded", init);
