@@ -16,9 +16,9 @@ body {
 }
 
 .main {
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
-  background: #fbcfff;
+  background: linear-gradient(#00806f, #007400);
   overflow: hidden;
 }
 .main__level-screen.active {
@@ -120,32 +120,52 @@ body {
 }
 .main__game-screen__game-container {
   display: flex;
+  flex-direction: column;
   position: relative;
   justify-content: center;
   align-items: center;
   width: 100%;
+  max-width: 100rem;
+  margin: auto;
   height: 90vh;
+  background: rgba(255, 255, 255, 0.3);
 }
-.main__game-screen__game-container__timer {
-  position: absolute;
-  display: inline-block;
-  top: 1rem;
-  left: 50%;
-  transform: translate(-50%);
+@media only screen and (min-width: 768px) {
+  .main__game-screen__game-container {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    box-shadow: 0 0 5px #000;
+  }
+}
+.main__game-screen__game-container__timer-container {
+  flex-basis: 10rem;
+  width: 100%;
+}
+.main__game-screen__game-container__timer-container__timer {
+  display: flex;
+  justify-content: space-between;
   font-size: 2.5rem;
+  width: 19rem;
+  margin: auto;
   text-align: center;
 }
-.main__game-screen__game-container__timer__minutes {
-  display: inline-block;
-  letter-spacing: 0.1rem;
-}
-.main__game-screen__game-container__timer__seconds {
+.main__game-screen__game-container__timer-container__timer__minutes {
+  flex: 1;
   display: inline-block;
   letter-spacing: 0.2rem;
+  text-align: center;
 }
-.main__game-screen__game-container__timer__milliseconds {
+.main__game-screen__game-container__timer-container__timer__seconds {
+  flex: 1;
   display: inline-block;
   letter-spacing: 0.2rem;
+  text-align: center;
+}
+.main__game-screen__game-container__timer-container__timer__milliseconds {
+  flex: 1;
+  display: inline-block;
+  letter-spacing: 0.2rem;
+  text-align: center;
 }
 .main__game-screen__game-container__cards.rookie {
   grid-template-columns: repeat(4, 1fr);
@@ -160,19 +180,12 @@ body {
   grid-template-rows: repeat(4, 1fr);
 }
 .main__game-screen__game-container__cards {
+  flex: 1;
   display: grid;
   grid-gap: 0.5rem;
-  background: #fff;
   width: 100%;
-  max-width: 100rem;
   padding: 1rem;
-  min-height: 90vh;
-}
-@media only screen and (min-width: 768px) {
-  .main__game-screen__game-container__cards {
-    border-radius: 1rem;
-    box-shadow: 0 0 10px #000;
-  }
+  min-height: 85vh;
 }
 .main__game-screen__game-container__cards__card {
   width: 8rem;
