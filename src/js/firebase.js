@@ -20,7 +20,7 @@ class Firebase {
     const snapshot = await getDocs(this.q);
     let highscores = [];
 
-    snapshot.docs.forEach(doc => highscores.push({name: doc.data().name, time: doc.data().time}));
+    snapshot.docs.forEach(doc => highscores.push({name: doc.data().name, time: doc.data().time, id: doc.id}));
 
     return highscores;
   }
