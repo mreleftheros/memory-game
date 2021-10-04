@@ -26,13 +26,16 @@ class UI {
     game = new Game(level);
     this.transitionScreens();
   }
+  toggleScreen(screen) {
+    screen.classList.toggle("active");
+  }
   transitionScreens() {
     this.levelScreen.classList.add("transition");
     this.levelScreen.addEventListener("transitionend", () => {
-      this.levelScreen.classList.remove("active");
+      this.toggleScreen(this.levelScreen);
     })
     
-    this.gameScreen.classList.add("active");
+    this.toggleScreen(this.gameScreen);
     game.init();
   }
   renderCards() {
@@ -183,16 +186,26 @@ class UI {
 
     this.highscoresList.innerHTML = html;
   }
-  renderWinnerScreen() {
-    this.winnerScreen.classList.add("active");
-  }
   updateSubmitBtn(e) {
-    if (e.currentTarget.value.length >= 4 && e.currentTarget.value.length <= 10) {
+    if (e.currentTarget.value.trim().length >= 4 && e.currentTarget.value.trim().length <= 10) {
       this.submitBtn.classList.add("enabled");
     }
     else {
       this.submitBtn.classList.remove("enabled");
     }
+  }
+  submitWinnerForm(e) {
+    e.preventDefault();
+
+    let name = e.currentTarget.name.value.trim();
+    if (name.length < 4 && name.length > 10) return; //check
+
+    e.currentTarget.reset();
+    this.toggleScreen(this.winnerScreen);
+    this.toggleScreen(this.gameScreen);
+    this.toggleScreen(this.levelScreen);
+
+    return game.updateHighscores(name);
   }
 }
 

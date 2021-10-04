@@ -111,10 +111,10 @@ class Game {
     this.reset();
 
     if(winner) {
-      return ui.renderWinnerScreen();
+      return ui.toggleScreen(ui.winnerScreen);
     }
     else {
-      return ui.renderRestart();
+      // return ui.renderRestart();
     }
   }
   checkHighscore() {
