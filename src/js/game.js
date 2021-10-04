@@ -1,4 +1,4 @@
-import ui from "./ui";
+import { ui } from "./ui";
 import firebase from "./firebase";
 
 class Game {
@@ -19,8 +19,10 @@ class Game {
     this.highscores;
   }
   async init() {
+    this.timer = null;
+    this.totalTime = 0;
     this.isPlaying = true;
-    this.highscores = await firebase.getHighscores();
+    this.highscores = await firebase.getHighscores(this.level);
     this.highscores.sort((a, b) => a.time - b.time);
     ui.renderHighscores();
    
@@ -124,10 +126,13 @@ class Game {
     return this.highscores.some(highscore => highscore.time > this.totalTime);
   }
   updateHighScores(name) {
-    const removed = this.highscores.pop();
+    if (this.highscores.length === 3) {
+      const removed = this.highscores.pop();
+      
+      firebase.deleteHighscore(removed.id);
+    }
     
-    firebase.deleteHighscore(removed.id);
-    firebase.setHighscore(name, this.totalTime);
+    return firebase.setHighscore(name, this.totalTime, this.level);
   }
 }
 

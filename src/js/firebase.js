@@ -14,10 +14,10 @@ class Firebase {
     });
     this.db = getFirestore(this.firebaseApp);
     this.highscoresRef = collection(this.db, "highscores");
-    this.q = query(this.highscoresRef, where("game", "==", "memory game"));
   }
-  async getHighscores() {
-    const snapshot = await getDocs(this.q);
+  async getHighscores(level) {
+    const q = query(this.highscoresRef, where("game", "==", "memory game"), where("level", "==", level));
+    const snapshot = await getDocs(q);
     let highscores = [];
 
     snapshot.docs.forEach(doc => highscores.push({name: doc.data().name, time: doc.data().time, id: doc.id}));
@@ -43,6 +43,14 @@ class Firebase {
   }
   async deleteHighscore(id) {
     await deleteDoc(doc(this.db, "highscores", id));
+  }
+  async setHighscore(name, time, level) {
+    await addDoc(this.highscoresRef, {
+      game: "memory game",
+      name,
+      time,
+      level
+    });
   }
 }
 

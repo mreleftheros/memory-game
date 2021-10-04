@@ -210,4 +210,4 @@ class UI {
 const ui = new UI();
 let game;
 
-export default ui;
+export { ui, game };

@@ -1,4 +1,4 @@
-import ui from "./ui";
+import { ui } from "./ui";
 import firebase from "./firebase";
 
 const init = () => {
