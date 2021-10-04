@@ -111,7 +111,7 @@ class Game {
     this.reset();
 
     if(winner) {
-      return ui.renderWinner();
+      return ui.renderWinnerScreen();
     }
     else {
       return ui.renderRestart();

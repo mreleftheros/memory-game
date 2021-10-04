@@ -31,6 +31,16 @@
 
     <!-- Game Screen -->
     <section class="main__game-screen" id="gameScreen">
+      <!-- Winner screen -->
+      <div class="main__game-screen__winner-screen" id="winnerScreen">
+        <p class="main__game-screen__winner-screen__text">Congratulations! You are a winner!</p>
+        <form id="winnerForm" class="main__game-screen__winner-screen__winner-form">
+          <label class="main__game-screen__winner-screen__winner-form__label" for="name">Enter your name below:</label>
+          <input class="main__game-screen__winner-screen__winner-form__input" type="text" id="name" name="name" placeholder="Between 4-10 characters..." minlength="4" maxlength="10" autofocus>
+          <button type="submit" class="main__game-screen__winner-screen__winner-form__submit-btn" id="submitBtn">Submit</button>
+        </form>
+      </div>
+
       <header class="main__game-screen__header">
         <p class="main__game-screen__header__text">Find The Matches</p>
       </header>

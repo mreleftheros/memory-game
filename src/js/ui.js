@@ -8,6 +8,15 @@ class UI {
     this.cardsContainer = document.getElementById("cardsContainer");
     this.timer = document.getElementById("timer");
     this.highscoresList = document.getElementById("highscoresList");
+    this.winnerForm = document.getElementById("winnerForm");
+    this.winnerScreen = document.getElementById("winnerScreen");
+    this.submitBtn = document.getElementById("submitBtn");
+    this.nameInput = document.getElementById("name");
+  }
+  init() {
+    this.levels.addEventListener("click", e => this.chooseLevel(e));
+    this.nameInput.addEventListener("input", e => this.updateSubmitBtn(e));
+    this.winnerForm.addEventListener("submit", e => this.submitWinnerForm(e));
   }
   chooseLevel(e) {
     if (e.target.tagName !== "BUTTON") return; // check
@@ -173,6 +182,17 @@ class UI {
     `;
 
     this.highscoresList.innerHTML = html;
+  }
+  renderWinnerScreen() {
+    this.winnerScreen.classList.add("active");
+  }
+  updateSubmitBtn(e) {
+    if (e.currentTarget.value.length >= 4 && e.currentTarget.value.length <= 10) {
+      this.submitBtn.classList.add("enabled");
+    }
+    else {
+      this.submitBtn.classList.remove("enabled");
+    }
   }
 }
 
