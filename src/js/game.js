@@ -114,29 +114,28 @@ class Game {
     let winner = true;
 
     if (this.highscores.length === 3) {
-      winner = checkHighscore();
+      winner = this.checkHighscore();
     }
 
-    if(winner) {
+    if (winner) {
       return ui.toggleScreen(ui.winnerScreen);
     }
     else {
-      ui.toggleScreen(ui.gameScreen);
-      ui.toggleScreen(ui.levelScreen);
-      return this.reset();
+      return window.location.reload();
     }
   }
   checkHighscore() {
     return this.highscores.some(highscore => highscore.time > this.totalTime);
   }
-  updateHighScores(name) {
+  async updateHighscores(name) {
     if (this.highscores.length === 3) {
       const removed = this.highscores.pop();
       
-      firebase.deleteHighscore(removed.id);
+      await firebase.deleteHighscore(removed.id);
     }
     
-    return firebase.setHighscore(name, this.totalTime, this.level);
+    await firebase.setHighscore(name, this.totalTime, this.level);
+    return window.location.reload();
   }
 }
 

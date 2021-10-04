@@ -32,6 +32,7 @@ class UI {
   transitionScreens() {
     this.levelScreen.classList.add("transition");
     this.levelScreen.addEventListener("transitionend", () => {
+      this.levelScreen.classList.remove("transition");
       this.toggleScreen(this.levelScreen);
     })
     
@@ -189,12 +190,10 @@ class UI {
     e.preventDefault();
 
     let name = e.currentTarget.name.value.trim();
-    if (name.length < 4 && name.length > 10) return; //check
+    if (name.length < 4 || name.length > 10) return; //check
 
     e.currentTarget.reset();
     this.toggleScreen(this.winnerScreen);
-    this.toggleScreen(this.gameScreen);
-    this.toggleScreen(this.levelScreen);
 
     return game.updateHighscores(name);
   }
