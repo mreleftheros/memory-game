@@ -111,7 +111,7 @@ body {
   display: flex;
 }
 .main__game-screen__winner-screen {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   position: absolute;

@@ -121,6 +121,8 @@ class UI {
     this.timer.innerHTML = html;
   }
   renderHighscores() {
+    this.highscoresList.innerHTML = "";
+
     // helper function which takes a timestamp and returns a timing format
     const setTiming = timestamp => {
       let minutes = String(Math.floor(timestamp / 1000 / 60));
@@ -146,43 +148,34 @@ class UI {
       return `${minutes} : ${seconds} : ${milliseconds}`;
     };
 
-    let html = `
-      <li class="main__game-screen__game-container__highscores-container__highscores-list__item">
-        <span class="main__game-screen__game-container__highscores-container__highscores-list__item__place">
-          &#129351; &#127942; 1st Place
-        </span>
-        <span class="main__game-screen__game-container__highscores-container__highscores-list__item__name">
-          ${game.highscores[0].name}
-        </span>
-        <span class="main__game-screen__game-container__highscores-container__highscores-list__item__time">
-          ${setTiming(game.highscores[0].time)}
-        </span>
-      </li>
-      <li class="main__game-screen__game-container__highscores-container__highscores-list__item">
-        <span class="main__game-screen__game-container__highscores-container__highscores-list__item__place">
-          &#129352; 2nd Place
-        </span>
-        <span class="main__game-screen__game-container__highscores-container__highscores-list__item__name">
-          ${game.highscores[1].name}
-        </span>
-        <span class="main__game-screen__game-container__highscores-container__highscores-list__item__time">
-          ${setTiming(game.highscores[1].time)}
-        </span>
-      </li>
-      <li class="main__game-screen__game-container__highscores-container__highscores-list__item">
-        <span class="main__game-screen__game-container__highscores-container__highscores-list__item__place">
-          &#129353; 3rd Place
-        </span>
-        <span class="main__game-screen__game-container__highscores-container__highscores-list__item__name">
-          ${game.highscores[2].name}
-        </span>
-        <span class="main__game-screen__game-container__highscores-container__highscores-list__item__time">
-          ${setTiming(game.highscores[2].time)}
-        </span>
-      </li>
-    `;
+    const fragment = new DocumentFragment();
 
-    this.highscoresList.innerHTML = html;
+    let html = "";
+
+    for (let i = 0, len = game.highscores.length; i < len; i++) {
+      // create element
+      const liElement = document.createElement("li");
+      liElement.classList.add("main__game-screen__game-container__highscores-container__highscores-list__item");
+
+      let placeHtml = i === 0 ? "&#129351; &#127942; 1st Place" : i === 1 ? "&#129352; 2nd Place" : "&#129353; 3rd Place";
+      
+      let html = `
+      <span class="main__game-screen__game-container__highscores-container__highscores-list__item__place">
+          ${placeHtml}
+      </span>
+      <span class="main__game-screen__game-container__highscores-container__highscores-list__item__name">
+        ${game.highscores[i].name}
+      </span>
+      <span class="main__game-screen__game-container__highscores-container__highscores-list__item__time">
+        ${setTiming(game.highscores[i].time)}
+      </span>
+      `;
+
+      liElement.innerHTML = html;
+      fragment.appendChild(liElement);
+    }
+
+    this.highscoresList.appendChild(fragment);
   }
   updateSubmitBtn(e) {
     if (e.currentTarget.value.trim().length >= 4 && e.currentTarget.value.trim().length <= 10) {

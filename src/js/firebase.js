@@ -24,23 +24,6 @@ class Firebase {
 
     return highscores;
   }
-  async setHighscores() {
-    await addDoc(this.highscoresRef, {
-      game: "memory game",
-      name: "George1",
-      time: 100000
-    });
-    await addDoc(this.highscoresRef, {
-      game: "memory game",
-      name: "George2",
-      time: 102000
-    });
-    await addDoc(this.highscoresRef, {
-      game: "memory game",
-      name: "George3",
-      time: 101000
-    });
-  }
   async deleteHighscore(id) {
     await deleteDoc(doc(this.db, "highscores", id));
   }

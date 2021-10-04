@@ -22,9 +22,11 @@ class Game {
     this.timer = null;
     this.totalTime = 0;
     this.isPlaying = true;
-    this.highscores = await firebase.getHighscores(this.level);
+    this.highscores = await firebase.getHighscores(this.level) || [];
     this.highscores.sort((a, b) => a.time - b.time);
-    ui.renderHighscores();
+    if (this.highscores.length > 0) {
+      ui.renderHighscores();
+    }
    
     this.setCardsCount();
     this.shuffleCards();
@@ -108,10 +110,12 @@ class Game {
   }
   endGame() {
     clearInterval(this.timer);
-
-    let winner = checkHighscore();
-
     this.isPlaying = false;
+    let winner = true;
+
+    if (this.highscores.length === 3) {
+      winner = checkHighscore();
+    }
 
     if(winner) {
       return ui.toggleScreen(ui.winnerScreen);
