@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, doc, getDocs, setDoc, addDoc, Timestamp, onSnapshot, query, where, orderBy } from "firebase/firestore";
+import { getFirestore, collection, doc, getDocs, deleteDoc, setDoc, addDoc, Timestamp, onSnapshot, query, where, orderBy } from "firebase/firestore";
 
 class Firebase {
   constructor() {
@@ -40,6 +40,9 @@ class Firebase {
       name: "George3",
       time: 101000
     });
+  }
+  async deleteHighscore(id) {
+    await deleteDoc(doc(this.db, "highscores", id));
   }
 }
 

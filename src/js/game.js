@@ -16,11 +16,12 @@ class Game {
     this.isPlaying = false;
     let timer;
     this.totalTime;
-    this.highscores = [];
+    this.highscores;
   }
   async init() {
     this.isPlaying = true;
     this.highscores = await firebase.getHighscores();
+    this.highscores.sort((a, b) => a.time - b.time);
     ui.renderHighscores();
    
     this.setCardsCount();
@@ -108,20 +109,25 @@ class Game {
 
     let winner = checkHighscore();
 
-    this.reset();
+    this.isPlaying = false;
 
     if(winner) {
       return ui.toggleScreen(ui.winnerScreen);
     }
     else {
-      // return ui.renderRestart();
+      ui.toggleScreen(ui.gameScreen);
+      ui.toggleScreen(ui.levelScreen);
+      return this.reset();
     }
   }
   checkHighscore() {
     return this.highscores.some(highscore => highscore.time > this.totalTime);
   }
-  reset() {
-    this.isPlaying = false;
+  updateHighScores(name) {
+    const removed = this.highscores.pop();
+    
+    firebase.deleteHighscore(removed.id);
+    firebase.setHighscore(name, this.totalTime);
   }
 }
 

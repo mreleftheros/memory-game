@@ -24,7 +24,7 @@ class UI {
     const level = e.target.getAttribute("data-level");
 
     game = new Game(level);
-    this.transitionScreens();
+    return this.transitionScreens();
   }
   toggleScreen(screen) {
     screen.classList.toggle("active");
@@ -36,7 +36,7 @@ class UI {
     })
     
     this.toggleScreen(this.gameScreen);
-    game.init();
+    return game.init();
   }
   renderCards() {
     this.cardsContainer.classList.add(game.level);
@@ -121,8 +121,6 @@ class UI {
     this.timer.innerHTML = html;
   }
   renderHighscores() {
-    const highscores = game.highscores.sort((a, b) => a.time - b.time);
-
     // helper function which takes a timestamp and returns a timing format
     const setTiming = timestamp => {
       let minutes = String(Math.floor(timestamp / 1000 / 60));
@@ -154,10 +152,10 @@ class UI {
           &#129351; &#127942; 1st Place
         </span>
         <span class="main__game-screen__game-container__highscores-container__highscores-list__item__name">
-          ${highscores[0].name}
+          ${game.highscores[0].name}
         </span>
         <span class="main__game-screen__game-container__highscores-container__highscores-list__item__time">
-          ${setTiming(highscores[0].time)}
+          ${setTiming(game.highscores[0].time)}
         </span>
       </li>
       <li class="main__game-screen__game-container__highscores-container__highscores-list__item">
@@ -165,10 +163,10 @@ class UI {
           &#129352; 2nd Place
         </span>
         <span class="main__game-screen__game-container__highscores-container__highscores-list__item__name">
-          ${highscores[1].name}
+          ${game.highscores[1].name}
         </span>
         <span class="main__game-screen__game-container__highscores-container__highscores-list__item__time">
-          ${setTiming(highscores[1].time)}
+          ${setTiming(game.highscores[1].time)}
         </span>
       </li>
       <li class="main__game-screen__game-container__highscores-container__highscores-list__item">
@@ -176,10 +174,10 @@ class UI {
           &#129353; 3rd Place
         </span>
         <span class="main__game-screen__game-container__highscores-container__highscores-list__item__name">
-          ${highscores[2].name}
+          ${game.highscores[2].name}
         </span>
         <span class="main__game-screen__game-container__highscores-container__highscores-list__item__time">
-          ${setTiming(highscores[2].time)}
+          ${setTiming(game.highscores[2].time)}
         </span>
       </li>
     `;
